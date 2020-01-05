@@ -2,19 +2,24 @@ package com.bo.punto.medico;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bo.punto.medico.ui.main.PlaceholderFragment;
+import com.bo.punto.medico.utils.FragmentListener;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Observer {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,31 +50,66 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
-        tabs.getTabAt(1).select();
+//        tabs.getTabAt(1).select();
     }
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(Login.newInstance(), "Mi perfil");
-        adapter.addFragment(Catalog.newInstance(), "Catalogo");
-        adapter.addFragment(Categories.newInstance(), "Categorias");
-        adapter.addFragment(Prices.newInstance(), "Precios");
-        adapter.addFragment(PlaceholderFragment.newInstance(4), "Sobre nosotros");
-        adapter.addFragment(ContactUs.newInstance(), "Contactos");
+//        adapter.addFragment(Login.newInstance(), "Mi perfil");
+//        adapter.addFragment(Catalog.newInstance(), "Catalogo");
+//        adapter.addFragment(Categories.newInstance(), "Categorias");
+//        adapter.addFragment(Prices.newInstance(), "Precios");
+//        adapter.addFragment(PlaceholderFragment.newInstance(4), "Sobre nosotros");
+//        adapter.addFragment(ContactUs.newInstance(), "Contactos");
         viewPager.setAdapter(adapter);
     }
 
-    private class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
+        FragmentProfileListener listener = new FragmentProfileListener();
+        private Fragment mFragmentAtPos0;
+        private FragmentManager mFragmentManager;
+
         public SectionsPagerAdapter(FragmentManager manager) {
             super(manager);
+            mFragmentManager = manager;
+
+            mFragmentAtPos0 = Login.newInstance(listener);
+
+            addFragment(mFragmentAtPos0, "Mi perfil");
+            addFragment(Catalog.newInstance(), "Catalogo");
+            addFragment(Categories.newInstance(), "Categorias");
+            addFragment(Prices.newInstance(), "Precios");
+            addFragment(AboutUs.newInstance(), "Sobre nosotros");
+            addFragment(ContactUs.newInstance(), "Contactos");
+        }
+
+        @Override
+        public int getItemPosition(@NonNull Object object) {
+            if (object instanceof Login && mFragmentAtPos0 instanceof Profile) {
+                return POSITION_NONE;
+            }
+
+            if (object instanceof Profile && mFragmentAtPos0 instanceof Login) {
+                return POSITION_NONE;
+            }
+
+            return POSITION_UNCHANGED;
         }
 
         @Override
         public Fragment getItem(int position) {
+            if (position == 0) {
+                if (mFragmentAtPos0 == null) {
+                    mFragmentAtPos0 = Login.newInstance(listener);
+                }
+
+                return mFragmentAtPos0;
+            }
+
             return mFragmentList.get(position);
         }
 
@@ -87,5 +127,30 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
+
+        public final class FragmentProfileListener implements FragmentListener {
+
+            public void onSwitchToNextFragment() {
+                mFragmentManager.beginTransaction().remove(mFragmentAtPos0).commit();
+
+                if (mFragmentAtPos0 instanceof Login) {
+                    mFragmentAtPos0 = Profile.newInstance(listener);
+                } else { // Instance of NextFragment
+                    mFragmentAtPos0 = Login.newInstance(listener);
+                }
+
+                notifyDataSetChanged();
+            }
+
+        }
+
     }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.tabs, Profile.newInstance(), "Perfil")
+                .commit();
+    }
+
 }

@@ -26,8 +26,13 @@
         </activity>
 
         <activity android:name=".ItemDetail"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".PasswordForgotten"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".Register"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

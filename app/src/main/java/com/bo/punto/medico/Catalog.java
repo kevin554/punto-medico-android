@@ -37,9 +37,10 @@ public class Catalog extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.activity_shopping_product_grid, container, false);
+        View root = inflater.inflate(R.layout.activity_catalog, container, false);
 
         parent_view = root.findViewById(R.id.parent_view);
+        root.clearFocus();
 
 //        initToolbar();
         initComponent(root);

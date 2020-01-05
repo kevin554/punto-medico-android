@@ -1,51 +1,44 @@
 package com.bo.punto.medico;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
-import com.bo.punto.medico.utils.Tools;
+import com.bo.punto.medico.utils.FragmentListener;
 
-public class Profile extends AppCompatActivity {
+public class Profile extends Fragment {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-        initToolbar();
-        initComponent();
+    private static FragmentListener listener;
+
+    public Profile() {
     }
 
-    private void initToolbar() {
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_menu);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("View Profile");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Tools.setSystemBarColor(this, R.color.purple_600);
+    public static Profile newInstance() {
+        Profile fragment = new Profile();
+        return fragment;
     }
 
-    private void initComponent() {
-
+    public static Fragment newInstance(MainActivity.SectionsPagerAdapter.FragmentProfileListener fragmentListener) {
+        listener = fragmentListener;
+        return newInstance();
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_search_setting, menu);
-        return true;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.activity_profile, container, false);
+        return root;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        } else {
-            Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    private void initToolbar() {
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        toolbar.setNavigationIcon(R.drawable.ic_menu);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setTitle("View Profile");
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        Tools.setSystemBarColor(this, R.color.purple_600);
+//    }
+
 }

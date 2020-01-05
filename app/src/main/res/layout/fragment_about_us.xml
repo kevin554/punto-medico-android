@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_10">
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nested_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
@@ -57,9 +57,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="Cada mes, miles de personas alrededor de Bolivia visitan Punto Medico para encontrar y vender una amplia gama de productos, desde equipos médicos, de laboratorio, odontología, muebles y bienes, servicios locales, insumos y muchos productos más." />
-
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -79,15 +77,13 @@
                     android:layout_margin="16dp"
                     android:orientation="vertical">
 
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Objetivos"
                         android:textAlignment="center"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
-
 
                     <View
                         android:layout_width="24dp"
@@ -96,7 +92,6 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="16dp"
                         android:background="@drawable/shape_round_small" />
-
 
                     <TextView
                         android:layout_width="match_parent"
@@ -109,20 +104,13 @@
                         android:layout_marginTop="16dp"
                         android:text="Los vendedores pueden ganar fácilmente algo de dinero extra simplemente por publicar productos que ya no usan – por lo tanto, facilitarles a los compradores la oportunidad de encontrar artículos de gran valor a precios razonables." />
 
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="Punto Medico te ofrece la plataforma mas segura de pagos a travez de Payme, considerada la forma mas segura de pagos en internet." />
-
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
-
         </LinearLayout>
-
-
     </androidx.core.widget.NestedScrollView>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

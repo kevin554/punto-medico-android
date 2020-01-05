@@ -1,4 +1,4 @@
-package com.bo.punto.medico;
+package com.bo.punto.medico.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+
+import com.bo.punto.medico.R;
 
 public class Categories extends Fragment {
 

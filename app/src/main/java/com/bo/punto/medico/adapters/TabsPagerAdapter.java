@@ -5,13 +5,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.bo.punto.medico.AboutUs;
-import com.bo.punto.medico.Catalog;
-import com.bo.punto.medico.Categories;
-import com.bo.punto.medico.ContactUs;
-import com.bo.punto.medico.Login;
-import com.bo.punto.medico.Prices;
-import com.bo.punto.medico.Profile;
+import com.bo.punto.medico.fragments.AboutUs;
+import com.bo.punto.medico.fragments.Catalog;
+import com.bo.punto.medico.fragments.Categories;
+import com.bo.punto.medico.fragments.ContactUs;
+import com.bo.punto.medico.fragments.Login;
+import com.bo.punto.medico.fragments.Prices;
+import com.bo.punto.medico.fragments.Profile;
 import com.bo.punto.medico.utils.FragmentListener;
 
 import java.util.ArrayList;

@@ -1,10 +1,11 @@
-package com.bo.punto.medico;
+package com.bo.punto.medico.activities;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bo.punto.medico.R;
 import com.bo.punto.medico.adapters.TabsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity{
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
-        TabLayout.Tab firstTab = tabs.getTabAt(1);
+        TabLayout.Tab firstTab = tabs.getTabAt(3);
         if (firstTab != null) {
             firstTab.select();
         }

@@ -1,4 +1,4 @@
-package com.bo.punto.medico;
+package com.bo.punto.medico.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,6 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bo.punto.medico.R;
+import com.bo.punto.medico.activities.Register;
+import com.bo.punto.medico.activities.PasswordForgotten;
 import com.bo.punto.medico.utils.FragmentListener;
 
 

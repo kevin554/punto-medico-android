@@ -17,11 +17,12 @@
             android:layout_height="@dimen/spacing_middle" />
 
         <ImageView
+            android:contentDescription="logo"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/logo_small"
-            android:tint="@color/green_300" />
+            android:tint="@color/green_300"/>
 
         <View
             android:layout_width="0dp"
@@ -32,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/spacing_medium"
-            android:text="Welcome to MaterialX"
+            android:text="Bienvenido a Punto Médico"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textColor="@color/green_300"
             android:textStyle="bold" />
@@ -42,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/spacing_medium"
-            android:text="Sign in to continue"
+            android:text="Registrese para continuar"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
             android:textColor="@color/blue_grey_300" />
 
@@ -54,8 +55,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="USERNAME"
+            android:text="Usuario"
             android:textAlignment="center"
+            android:textAllCaps="true"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
             android:textColor="@color/blue_grey_200" />
 
@@ -78,8 +80,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="EMAIL"
+            android:text="Correo"
             android:textAlignment="center"
+            android:textAllCaps="true"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
             android:textColor="@color/blue_grey_200" />
 
@@ -102,7 +105,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PASSWORD"
+            android:text="Contraseña"
+            android:textAllCaps="true"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
             android:textColor="@color/blue_grey_200" />
@@ -126,8 +130,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CONFIRM PASSWORD"
+            android:text="Confirme su contraseña"
             android:textAlignment="center"
+            android:textAllCaps="true"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
             android:textColor="@color/blue_grey_200" />
 
@@ -142,7 +147,6 @@
             android:singleLine="true"
             android:textColor="@color/blue_grey_800"
             android:theme="@style/EditText.Green" />
-
 
         <View
             android:layout_width="0dp"
@@ -155,15 +159,12 @@
             android:layout_marginLeft="-4dp"
             android:layout_marginRight="-4dp"
             android:background="@drawable/btn_rounded_green_300"
-            android:text="S I G N  I N"
-            android:textAllCaps="false"
+            android:text="Registrarse"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="@dimen/spacing_medium" />
-
     </LinearLayout>
-
 </RelativeLayout>

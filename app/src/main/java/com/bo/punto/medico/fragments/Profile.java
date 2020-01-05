@@ -1,16 +1,16 @@
-package com.bo.punto.medico;
+package com.bo.punto.medico.fragments;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.bo.punto.medico.R;
 import com.bo.punto.medico.utils.FragmentListener;
 
 public class Profile extends Fragment {

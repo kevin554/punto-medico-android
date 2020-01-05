@@ -1,4 +1,4 @@
-package com.bo.punto.medico;
+package com.bo.punto.medico.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 
+import com.bo.punto.medico.R;
 import com.bo.punto.medico.utils.Tools;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;

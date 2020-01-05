@@ -19,7 +19,7 @@ public class AboutUs extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.activity_about_us, container, false);
+        View root = inflater.inflate(R.layout.fragment_about_us, container, false);
         return root;
     }
 

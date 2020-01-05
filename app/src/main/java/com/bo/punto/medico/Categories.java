@@ -19,7 +19,7 @@ public class Categories extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.activity_categories, container, false);
+        View root = inflater.inflate(R.layout.fragment_categories, container, false);
         return root;
     }
 

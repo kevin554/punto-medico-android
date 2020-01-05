@@ -7,8 +7,7 @@
     android:background="@color/grey_10"
     android:orientation="vertical">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/grey_10"
@@ -35,10 +34,9 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:contentInsetStartWithNavigation="0dp"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:subtitle="welcome to MaterialX"
             app:subtitleTextAppearance="@style/Base.TextAppearance.AppCompat.Caption"
             app:subtitleTextColor="@color/grey_10"
-            app:title="Hi, Miller Wilson" />
+            app:title="Bienvenido a Punto Médico" />
     </RelativeLayout>
 
     <!--BUSCADOR-->
@@ -67,7 +65,8 @@
                 android:background="@android:color/transparent"
                 android:clickable="true"
                 android:tint="@color/grey_60"
-                app:srcCompat="@drawable/ic_search" />
+                app:srcCompat="@drawable/ic_search"
+                android:focusable="true" />
 
             <EditText
                 android:id="@+id/et_search"
@@ -75,23 +74,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:hint="Find our product"
+                android:hint="Comience a buscar"
                 android:imeOptions="actionSearch"
                 android:maxLines="1"
                 android:singleLine="true">
-
-                <requestFocus />
-
             </EditText>
-
-            <ImageButton
-                android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@android:color/transparent"
-                android:clickable="true"
-                android:tint="@color/grey_60"
-                app:srcCompat="@drawable/ic_menu" />
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -102,10 +89,8 @@
         android:scrollbars="vertical"
         android:scrollingCache="true"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:listitem="@layout/item_shop_product_card"
+        tools:listitem="@layout/item_catalog"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
     </LinearLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

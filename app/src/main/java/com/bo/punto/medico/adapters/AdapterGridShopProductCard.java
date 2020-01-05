@@ -60,7 +60,7 @@ public class AdapterGridShopProductCard extends RecyclerView.Adapter<RecyclerVie
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder vh;
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_shop_product_card, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_catalog, parent, false);
         vh = new OriginalViewHolder(v);
         return vh;
     }

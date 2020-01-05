@@ -113,6 +113,7 @@
                     android:layout_height="@dimen/spacing_mlarge" />
 
                 <Button
+                    android:id="@+id/login"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginLeft="-4dp"

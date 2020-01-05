@@ -20,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
+
 public class Catalog extends Fragment {
 
     private View parent_view;
@@ -31,40 +32,21 @@ public class Catalog extends Fragment {
     }
 
     public static Catalog newInstance() {
-        Catalog catalog = new Catalog();
-        return catalog;
+        Catalog fragment = new Catalog();
+        return fragment;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.activity_catalog, container, false);
+        View root = inflater.inflate(R.layout.fragment_catalog, container, false);
 
         parent_view = root.findViewById(R.id.parent_view);
-        root.clearFocus();
+//        root.clearFocus();
 
-//        initToolbar();
         initComponent(root);
 
         return root;
     }
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_shopping_product_grid);
-//        parent_view = findViewById(R.id.parent_view);
-//
-//        initToolbar();
-//        initComponent();
-//    }
-
-//    private void initToolbar() {
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        toolbar.setNavigationIcon(R.drawable.ic_menu);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setTitle("Products");
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//    }
 
     private void initComponent(View view) {
         recyclerView = view.findViewById(R.id.recyclerView);
@@ -97,19 +79,4 @@ public class Catalog extends Fragment {
 
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_cart_setting, menu);
-//        return true;
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        if (item.getItemId() == android.R.id.home) {
-//            finish();
-//        } else {
-//            Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
 }

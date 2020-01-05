@@ -35,15 +35,30 @@
                 app:cardCornerRadius="3dp"
                 app:cardElevation="2dp">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="16dp"
-                    android:text="Punto Medico es la plataforma líder en Bolivia de clasificados online para mercados 100% en el área médica.
+                    android:orientation="vertical">
 
-Punto Medico conecta la comunidad local para vender, comprar e intercambiar sus bienes usados y servicios de una manera rápido y fácil para que cualquier persona pueda publicar un anuncio desde su celular o en el sitio web.
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Punto Medico es la plataforma líder en Bolivia de clasificados online para mercados 100% en el área médica." />
 
-Cada mes, miles de personas alrededor de Bolivia visitan Punto Medico para encontrar y vender una amplia gama de productos, desde equipos médicos, de laboratorio, odontología, muebles y bienes, servicios locales, insumos y muchos productos más." />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Punto Medico conecta la comunidad local para vender, comprar e intercambiar sus bienes usados y servicios de una manera rápido y fácil para que cualquier persona pueda publicar un anuncio desde su celular o en el sitio web." />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Cada mes, miles de personas alrededor de Bolivia visitan Punto Medico para encontrar y vender una amplia gama de productos, desde equipos médicos, de laboratorio, odontología, muebles y bienes, servicios locales, insumos y muchos productos más." />
+
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -91,12 +106,14 @@ Cada mes, miles de personas alrededor de Bolivia visitan Punto Medico para encon
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
                         android:text="Los vendedores pueden ganar fácilmente algo de dinero extra simplemente por publicar productos que ya no usan – por lo tanto, facilitarles a los compradores la oportunidad de encontrar artículos de gran valor a precios razonables." />
 
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
                         android:text="Punto Medico te ofrece la plataforma mas segura de pagos a travez de Payme, considerada la forma mas segura de pagos en internet." />
 
                 </LinearLayout>

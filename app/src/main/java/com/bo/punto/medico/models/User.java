@@ -1,6 +1,10 @@
 package com.bo.punto.medico.models;
 
-public class User {
+import io.realm.RealmList;
+import io.realm.RealmObject;
+
+
+public class User extends RealmObject {
 
     private String name;
     private String user;
@@ -8,5 +12,7 @@ public class User {
     private String phone;
     private String cellphone;
     private String website;
+    // Declare one-to-many relationships
+    private RealmList<Item> items;
 
 }

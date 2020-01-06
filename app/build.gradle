@@ -34,4 +34,9 @@ dependencies {
     implementation 'com.mikhaellopez:circularimageview:3.0.2'          // circle image view
     implementation 'com.github.bumptech.glide:glide:3.7.0'             // image loader
     implementation 'com.balysv:material-ripple:1.0.2'                  // ripple effect
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.android.volley:volley:1.1.0'
 }
+
+apply plugin: 'realm-android'

@@ -1,6 +1,9 @@
 package com.bo.punto.medico.models;
 
-public class Comment {
+import io.realm.RealmObject;
+
+
+public class Comment extends RealmObject {
 
     private String email;
     private String website;

@@ -1,6 +1,9 @@
 package com.bo.punto.medico.models;
 
-public class Subcategory {
+import io.realm.RealmObject;
+
+
+public class Subcategory extends RealmObject {
 
     private String name;
 

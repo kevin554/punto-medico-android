@@ -1,6 +1,10 @@
 package com.bo.punto.medico.models;
 
-public class Item {
+import io.realm.RealmList;
+import io.realm.RealmObject;
+
+
+public class Item extends RealmObject {
 
     private String name;
     private String salePrice;
@@ -12,5 +16,8 @@ public class Item {
     private int seenAccount;
     private double rating;
     private String description;
+    // Declare one-to-many relationships
+    private RealmList<Comment> comments;
+    private RealmList<Image> images;
 
 }

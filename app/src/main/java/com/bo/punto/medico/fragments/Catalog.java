@@ -1,5 +1,6 @@
 package com.bo.punto.medico.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bo.punto.medico.activities.ItemDetail;
 import com.bo.punto.medico.R;
+import com.bo.punto.medico.activities.ItemDetail;
 import com.bo.punto.medico.adapters.AdapterGridShopProductCard;
 import com.bo.punto.medico.models.DataGenerator;
 import com.bo.punto.medico.models.ShopProduct;
@@ -45,6 +46,7 @@ public class Catalog extends Fragment {
 //        root.clearFocus();
 
         initComponent(root);
+        fetchCatalog();
 
         return root;
     }
@@ -79,5 +81,11 @@ public class Catalog extends Fragment {
         });
 
     }
+
+    @SuppressLint("ResourceType")
+    private void fetchCatalog() {
+
+    }
+
 
 }

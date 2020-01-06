@@ -1,6 +1,9 @@
 package com.bo.punto.medico.models;
 
-public class Image {
+import io.realm.RealmObject;
+
+
+public class Image extends RealmObject {
 
     private String name;
     private String src;

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity{
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
-        TabLayout.Tab firstTab = tabs.getTabAt(3);
+        TabLayout.Tab firstTab = tabs.getTabAt(1);
         if (firstTab != null) {
             firstTab.select();
         }

@@ -22,7 +22,7 @@ import java.util.List;
 public class Prices extends Fragment {
 
     private LinearLayout dotsLayout;
-    private List<PriceModality> plans = new ArrayList<>();
+    private List<PriceModality> plans;
 
     public Prices() {
     }
@@ -35,8 +35,12 @@ public class Prices extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_prices, container, false);
 
-        plans.add(new PriceModality("BÁSICO", "15 Bs", "2 Fotos", "Por 15 dias de publicación"));
-        plans.add(new PriceModality("PREMIUM", "40 Bs", "Email marketing", "Anuncio destacado"));
+        if (plans == null) {
+            plans = new ArrayList<>();
+
+            plans.add(new PriceModality("BÁSICO", "15 Bs", "2 Fotos", "Por 15 dias de publicación"));
+            plans.add(new PriceModality("PREMIUM", "40 Bs", "Email marketing", "Anuncio destacado"));
+        }
 
         ViewPager viewPager = root.findViewById(R.id.view_pager);
         dotsLayout = root.findViewById(R.id.layoutDots);

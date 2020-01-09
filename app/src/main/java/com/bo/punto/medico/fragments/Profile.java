@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.bo.punto.medico.R;
 import com.bo.punto.medico.utils.FragmentListener;
 
+
 public class Profile extends Fragment {
 
     private static FragmentListener listener;

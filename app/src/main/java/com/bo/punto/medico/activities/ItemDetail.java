@@ -53,7 +53,7 @@ public class ItemDetail extends AppCompatActivity {
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ItemDetail.this, PasswordForgotten.class));
+                startActivity(new Intent(ItemDetail.this, UserProfile.class));
             }
         });
     }

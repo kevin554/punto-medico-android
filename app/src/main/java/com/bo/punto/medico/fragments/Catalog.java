@@ -73,19 +73,17 @@ public class Catalog extends Fragment {
             }
         });
 
-        mAdapter.setOnMoreButtonClickListener(new AdapterGridShopProductCard.OnMoreButtonClickListener() {
-            @Override
-            public void onItemClick(View view, ShopProduct obj, MenuItem item) {
-                Snackbar.make(parent_view, obj.title + " (" + item.getTitle() + ") clicked", Snackbar.LENGTH_SHORT).show();
-            }
-        });
-
+//        mAdapter.setOnMoreButtonClickListener(new AdapterGridShopProductCard.OnMoreButtonClickListener() {
+//            @Override
+//            public void onItemClick(View view, ShopProduct obj, MenuItem item) {
+//                Snackbar.make(parent_view, obj.title + " (" + item.getTitle() + ") clicked", Snackbar.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @SuppressLint("ResourceType")
     private void fetchCatalog() {
 
     }
-
 
 }

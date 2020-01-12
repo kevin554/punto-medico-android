@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -11,26 +12,36 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.bo.punto.medico.R;
+import com.bo.punto.medico.utils.FileUtil;
 import com.bo.punto.medico.utils.Tools;
 import com.hootsuite.nachos.NachoTextView;
 import com.hootsuite.nachos.terminator.ChipTerminatorHandler;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import id.zelory.compressor.Compressor;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class ItemDetail extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int PICK_IMAGE = 2;
+    private static final int USER_POST_SELECTED = 3;
     private ImageView imageView;
 
     @Override
@@ -53,7 +64,7 @@ public class ItemDetail extends AppCompatActivity {
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ItemDetail.this, UserProfile.class));
+                startActivityForResult(new Intent(ItemDetail.this, UserProfile.class), USER_POST_SELECTED);
             }
         });
     }
@@ -123,6 +134,12 @@ public class ItemDetail extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == USER_POST_SELECTED && resultCode == RESULT_OK) {
+            if (data == null) {
+                return;
+            }
+        }
+
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if (data == null) {
                 return;
@@ -156,18 +173,58 @@ public class ItemDetail extends AppCompatActivity {
             Uri imageUri = data.getData();
 
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                File imageFile = FileUtil.from(this, imageUri);
+
+                String size = String.format("Size : %s", getReadableFileSize(imageFile.length()));
+
+                Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
                 imageView.setImageBitmap(bitmap);
 
-                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-                byte[] byteArray = outputStream.toByteArray();
-
-                String encodedString = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+//                new Compressor(this)
+//                        .compressToFileAsFlowable(imageFile)
+//                        .subscribeOn(Schedulers.io())
+//                        .observeOn(AndroidSchedulers.mainThread())
+//                        .subscribe(new Consumer<File>() {
+//                            @Override
+//                            public void accept(File file) throws Exception {
+//                                String size = String.format("Size : %s", getReadableFileSize(file.length()));
+//                                imageView.setImageBitmap(BitmapFactory.decodeFile(file.getAbsolutePath()));
+//                            }
+//                        }, new Consumer<Throwable>() {
+//                            @Override
+//                            public void accept(Throwable throwable) throws Exception {
+//                                Toast.makeText(ItemDetail.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
             } catch (IOException ignored) {
 
             }
+
+            /* NORMAL */
+//            try {
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+//                imageView.setImageBitmap(bitmap);
+//
+//                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+//                byte[] byteArray = outputStream.toByteArray();
+//
+//                String encodedString = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+//            } catch (IOException ignored) {
+//
+//            }
         }
+    }
+
+    public String getReadableFileSize(long size) {
+        if (size <= 0) {
+            return "0";
+        }
+
+        final String[] units = new String[]{"B", "KB", "MB", "GB", "TB"};
+        int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
+
+        return new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
     }
 
 }

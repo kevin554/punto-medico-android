@@ -1,5 +1,6 @@
 package com.bo.punto.medico.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -51,7 +52,15 @@ public class UserProfile extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new AdapterGridShopProductCard.OnItemClickListener() {
             @Override
             public void onItemClick(View view, ShopProduct obj, int position) {
-                startActivity(new Intent(UserProfile.this, ItemDetail.class));
+//                Intent returnIntent = new Intent();
+//                returnIntent.putExtra("result", result);
+//                setResult(Activity.RESULT_OK,returnIntent);
+//                finish();
+
+                // If you don't want to return data:
+                Intent returnIntent = new Intent();
+                setResult(Activity.RESULT_CANCELED, returnIntent);
+                finish();
             }
         });
     }

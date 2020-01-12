@@ -17,12 +17,13 @@ import com.bo.punto.medico.utils.FragmentListener;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class TabsPagerAdapter extends FragmentStatePagerAdapter {
 
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    FragmentProfileListener listener = new FragmentProfileListener();
+    private FragmentProfileListener listener = new FragmentProfileListener();
     private Fragment mFragmentAtPos0;
     private FragmentManager mFragmentManager;
 
@@ -53,6 +54,7 @@ public class TabsPagerAdapter extends FragmentStatePagerAdapter {
         return POSITION_UNCHANGED;
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
@@ -71,7 +73,7 @@ public class TabsPagerAdapter extends FragmentStatePagerAdapter {
         return mFragmentList.size();
     }
 
-    public void addFragment(Fragment fragment, String title) {
+    private void addFragment(Fragment fragment, String title) {
         mFragmentList.add(fragment);
         mFragmentTitleList.add(title);
     }
@@ -81,7 +83,7 @@ public class TabsPagerAdapter extends FragmentStatePagerAdapter {
         return mFragmentTitleList.get(position);
     }
 
-    public final class FragmentProfileListener implements FragmentListener {
+    private final class FragmentProfileListener implements FragmentListener {
 
         public void onSwitchToNextFragment() {
             mFragmentManager.beginTransaction().remove(mFragmentAtPos0).commit();

@@ -36,6 +36,7 @@ import com.google.android.gms.maps.GoogleMap;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 public class Tools {
 
     public static void setSystemBarColor(Activity act) {

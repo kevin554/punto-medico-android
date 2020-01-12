@@ -33,6 +33,7 @@ import java.util.List;
 
 import id.zelory.compressor.Compressor;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
@@ -175,44 +176,33 @@ public class ItemDetail extends AppCompatActivity {
             try {
                 File imageFile = FileUtil.from(this, imageUri);
 
-                String size = String.format("Size : %s", getReadableFileSize(imageFile.length()));
+                Disposable subscribe = new Compressor(this)
+                        .compressToFileAsFlowable(imageFile)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Consumer<File>() {
+                            @Override
+                            public void accept(File file) {
+                                Bitmap imageBitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                                imageView.setImageBitmap(imageBitmap);
 
-                Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
-                imageView.setImageBitmap(bitmap);
+                                String size = String.format("Size : %s", getReadableFileSize(file.length()));
 
-//                new Compressor(this)
-//                        .compressToFileAsFlowable(imageFile)
-//                        .subscribeOn(Schedulers.io())
-//                        .observeOn(AndroidSchedulers.mainThread())
-//                        .subscribe(new Consumer<File>() {
-//                            @Override
-//                            public void accept(File file) throws Exception {
-//                                String size = String.format("Size : %s", getReadableFileSize(file.length()));
-//                                imageView.setImageBitmap(BitmapFactory.decodeFile(file.getAbsolutePath()));
-//                            }
-//                        }, new Consumer<Throwable>() {
-//                            @Override
-//                            public void accept(Throwable throwable) throws Exception {
-//                                Toast.makeText(ItemDetail.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
+                                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                                imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+                                byte[] byteArray = outputStream.toByteArray();
+
+                                String encodedString = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) {
+                                Toast.makeText(ItemDetail.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
             } catch (IOException ignored) {
 
             }
-
-            /* NORMAL */
-//            try {
-//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-//                imageView.setImageBitmap(bitmap);
-//
-//                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-//                byte[] byteArray = outputStream.toByteArray();
-//
-//                String encodedString = Base64.encodeToString(byteArray, Base64.NO_WRAP);
-//            } catch (IOException ignored) {
-//
-//            }
         }
     }
 

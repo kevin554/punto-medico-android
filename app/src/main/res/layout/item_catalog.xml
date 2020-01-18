@@ -49,19 +49,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                     android:textColor="@color/grey_90" />
 
-                <ImageButton
-                    android:visibility="gone"
-                    android:id="@+id/more"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/spacing_xlarge"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:tint="@color/grey_40"
-                    app:srcCompat="@drawable/ic_more_vert" />
-
                 <View
                     android:layout_width="@dimen/spacing_small"
                     android:layout_height="0dp" />
-
             </LinearLayout>
 
             <View
@@ -79,6 +69,7 @@
                     android:layout_height="0dp" />
 
                 <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/rating"
                     style="@style/Yellow.Small.AppCompatRatingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -105,15 +96,11 @@
                 <View
                     android:layout_width="@dimen/spacing_middle"
                     android:layout_height="0dp" />
-
             </LinearLayout>
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="@dimen/spacing_middle" />
-
         </LinearLayout>
-
     </com.balysv.materialripple.MaterialRippleLayout>
-
 </androidx.cardview.widget.CardView>

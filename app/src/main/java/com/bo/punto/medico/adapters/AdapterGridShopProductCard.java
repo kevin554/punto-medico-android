@@ -2,72 +2,51 @@ package com.bo.punto.medico.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.PopupMenu;
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bo.punto.medico.R;
 import com.bo.punto.medico.models.ShopProduct;
 import com.bo.punto.medico.utils.Tools;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 public class AdapterGridShopProductCard extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<ShopProduct> items = new ArrayList<>();
-
+    private List<ShopProduct> items;
     private Context ctx;
     private OnItemClickListener mOnItemClickListener;
-    private OnMoreButtonClickListener onMoreButtonClickListener;
-
-    public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
-        this.mOnItemClickListener = mItemClickListener;
-    }
-
-    public void setOnMoreButtonClickListener(final OnMoreButtonClickListener onMoreButtonClickListener) {
-        this.onMoreButtonClickListener = onMoreButtonClickListener;
-    }
 
     public AdapterGridShopProductCard(Context context, List<ShopProduct> items) {
         this.items = items;
         ctx = context;
     }
 
-    public class OriginalViewHolder extends RecyclerView.ViewHolder {
-        public ImageView image;
-        public TextView title;
-        public TextView price;
-        public ImageButton more;
-        public View lyt_parent;
-
-        public OriginalViewHolder(View v) {
-            super(v);
-            image = (ImageView) v.findViewById(R.id.image);
-            title = (TextView) v.findViewById(R.id.title);
-            price = (TextView) v.findViewById(R.id.price);
-            more = (ImageButton) v.findViewById(R.id.more);
-            lyt_parent = (View) v.findViewById(R.id.lyt_parent);
-        }
+    @NonNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_catalog, parent, false);
+        return new OriginalViewHolder(v);
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RecyclerView.ViewHolder vh;
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_catalog, parent, false);
-        vh = new OriginalViewHolder(v);
-        return vh;
+    public int getItemCount() {
+        return items.size();
+    }
+
+    public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
+        this.mOnItemClickListener = mItemClickListener;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof OriginalViewHolder) {
             OriginalViewHolder view = (OriginalViewHolder) holder;
 
@@ -83,41 +62,28 @@ public class AdapterGridShopProductCard extends RecyclerView.Adapter<RecyclerVie
                     }
                 }
             });
-
-            view.more.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (onMoreButtonClickListener == null) return;
-                    onMoreButtonClick(view, p);
-                }
-            });
         }
     }
 
-    private void onMoreButtonClick(final View view, final ShopProduct p) {
-        PopupMenu popupMenu = new PopupMenu(ctx, view);
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                onMoreButtonClickListener.onItemClick(view, p, item);
-                return true;
-            }
-        });
-        popupMenu.inflate(R.menu.menu_product_more);
-        popupMenu.show();
-    }
+    public class OriginalViewHolder extends RecyclerView.ViewHolder {
 
-    @Override
-    public int getItemCount() {
-        return items.size();
+        public ImageView image;
+        public TextView title;
+        public TextView price;
+        public View lyt_parent;
+
+        public OriginalViewHolder(View v) {
+            super(v);
+            image = v.findViewById(R.id.image);
+            title = v.findViewById(R.id.title);
+            price = v.findViewById(R.id.price);
+            lyt_parent = v.findViewById(R.id.lyt_parent);
+        }
+
     }
 
     public interface OnItemClickListener {
         void onItemClick(View view, ShopProduct obj, int pos);
-    }
-
-    public interface OnMoreButtonClickListener {
-        void onItemClick(View view, ShopProduct obj, MenuItem item);
     }
 
 }

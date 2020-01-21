@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.bo.punto.medico.R;
 import com.bo.punto.medico.utils.FragmentListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class Profile extends Fragment {
@@ -35,11 +36,19 @@ public class Profile extends Fragment {
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
         ImageButton action = root.findViewById(R.id.action);
+        FloatingActionButton fab = root.findViewById(R.id.fab);
 
         action.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 confirmLogOut();
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 

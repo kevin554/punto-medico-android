@@ -37,14 +37,14 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/action"
-                    android:contentDescription="accion"
-                    android:layout_width="?attr/actionBarSize"
-                    android:layout_height="?attr/actionBarSize"
-                    android:layout_margin="@dimen/spacing_middle"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:tint="@color/light_green_600"
-                    app:srcCompat="@drawable/ic_exit_to_app" />
+                    android:visibility="invisible"
+                android:contentDescription="telefono"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_margin="@dimen/spacing_middle"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@color/light_green_600"
+                app:srcCompat="@drawable/ic_call" />
 
                 <com.mikhaellopez.circularimageview.CircularImageView
                     android:id="@+id/image"
@@ -56,13 +56,14 @@
                     app:civ_border_width="2dp" />
 
                 <ImageButton
-                    android:contentDescription="telefono"
+                    android:id="@+id/action"
+                    android:contentDescription="accion"
                     android:layout_width="?attr/actionBarSize"
                     android:layout_height="?attr/actionBarSize"
                     android:layout_margin="@dimen/spacing_middle"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:tint="@color/light_green_600"
-                    app:srcCompat="@drawable/ic_call" />
+                    app:srcCompat="@drawable/ic_exit_to_app" />
             </LinearLayout>
 
             <LinearLayout
@@ -233,4 +234,15 @@
                 android:layout_height="@dimen/spacing_xxlarge" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_gravity="bottom|end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_smlarge"
+        android:layout_marginEnd="@dimen/spacing_smlarge"
+        android:tint="@android:color/white"
+        app:rippleColor="@android:color/white"
+        app:srcCompat="@drawable/ic_add" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

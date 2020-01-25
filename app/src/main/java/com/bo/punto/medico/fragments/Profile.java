@@ -1,6 +1,7 @@
 package com.bo.punto.medico.fragments;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.bo.punto.medico.R;
+import com.bo.punto.medico.activities.PublishNewItem;
 import com.bo.punto.medico.utils.FragmentListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -48,7 +50,7 @@ public class Profile extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(getContext(), PublishNewItem.class));
             }
         });
 

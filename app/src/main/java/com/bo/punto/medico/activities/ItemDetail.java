@@ -132,8 +132,8 @@ public class ItemDetail extends AppCompatActivity {
 
         NachoTextView et_tag = findViewById(R.id.et_tag);
         List<String> items = new ArrayList<>();
-        items.add("Mesas quirurgicas");
-        items.add("Incubadoras");
+        items.add("Muebles");
+        items.add("Electrodomésticos");
         et_tag.setText(items);
         et_tag.addChipTerminator('\n', ChipTerminatorHandler.BEHAVIOR_CHIPIFY_ALL);
     }

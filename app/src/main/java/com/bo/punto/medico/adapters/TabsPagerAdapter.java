@@ -36,9 +36,9 @@ public class TabsPagerAdapter extends FragmentStatePagerAdapter {
         addFragment(mFragmentAtPos0, "Mi perfil");
         addFragment(Catalog.newInstance(), "Catalogo");
         addFragment(Categories.newInstance(), "Categorias");
-        addFragment(Prices.newInstance(), "Precios");
-        addFragment(ContactUs.newInstance(), "Contactos");
-        addFragment(AboutUs.newInstance(), "Sobre nosotros");
+//        addFragment(Prices.newInstance(), "Precios");
+//        addFragment(ContactUs.newInstance(), "Contactos");
+//        addFragment(AboutUs.newInstance(), "Sobre nosotros");
     }
 
     @Override
